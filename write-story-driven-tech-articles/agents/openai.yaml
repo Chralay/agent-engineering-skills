@@ -1,0 +1,4 @@
+interface:
+  display_name: "评书式技术文章写作"
+  short_description: "借鉴评书的叙事节奏，写出准确、清楚、让人愿意读下去的技术文章。"
+  default_prompt: "Use $write-story-driven-tech-articles to turn this technical material into an accurate, clear, and engaging article."

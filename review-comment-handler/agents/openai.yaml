@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Comment Handler"
+  short_description: "Track and resolve batches of review comments without omissions."
+  default_prompt: "Use $review-comment-handler to handle this batch of review comments and produce a complete status checklist plus changed-file summary."

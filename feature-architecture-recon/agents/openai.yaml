@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature Architecture Recon"
+  short_description: "Trace existing feature architecture before changes"
+  default_prompt: "Use $feature-architecture-recon to trace an unfamiliar feature before proposing changes."
