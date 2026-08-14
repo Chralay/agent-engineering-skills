@@ -1,0 +1,4 @@
+interface:
+  display_name: "编写前端单元测试"
+  short_description: "依据已确认的测试设计编写可追踪、可验证的 Vue 或 React 单测"
+  default_prompt: "使用 $write-unit-test 根据已确认的 Spec、Test Design 和现有代码编写前端单元测试并生成实施记录。"

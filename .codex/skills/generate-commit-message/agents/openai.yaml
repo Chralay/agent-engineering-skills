@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Commit Message"
+  short_description: "Draft Chinese staged git commit messages"
+  default_prompt: "Use $generate-commit-message to read the staged git diff and draft a Chinese conventional commit message."

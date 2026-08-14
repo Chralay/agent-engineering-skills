@@ -1,0 +1,4 @@
+interface:
+  display_name: "编写测试设计"
+  short_description: "根据已确认的前端 Spec 产出可追踪、可落地的测试设计"
+  default_prompt: "使用 $write-test-design 根据已确认的前端 Spec 编写业务可读、可追踪的 Test Design。"

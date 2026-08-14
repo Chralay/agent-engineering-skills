@@ -9,6 +9,8 @@
 | [`feature-architecture-recon`](./feature-architecture-recon/) | 在设计、评审或实现前，基于代码证据梳理现有功能的入口、数据流、事实源、边界和风险。 |
 | [`review-comment-handler`](./review-comment-handler/) | 可追踪地处理批量评审意见，先分类和讨论，再统一修改并输出最终处理清单。 |
 | [`write-frontend-spec`](./write-frontend-spec/) | 将业务需求、当前代码和接口契约整理为可实现、可验收的前端功能技术 Spec。 |
+| [`write-test-design`](./write-test-design/) | 将已确认的前端 Spec 转换为业务可读、可追踪的测试设计。 |
+| [`write-unit-test`](./write-unit-test/) | 根据已确认的 Test Design 编写可追踪、可验证的 Vue 或 React 前端单元测试。 |
 | [`write-story-driven-tech-articles`](./write-story-driven-tech-articles/) | 使用问题驱动、渐进揭示和完整收束的方式编写或改写技术文章。 |
 
 ## 目录约定
