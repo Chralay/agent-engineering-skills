@@ -1,4 +1,4 @@
 interface:
   display_name: "编写前端 Spec"
-  short_description: "基于最新需求与代码编写可实现、可验收的前端 Spec"
-  default_prompt: "使用 $write-frontend-spec 基于最新需求和当前前端代码编写精炼、可实现、可验收的 Spec。"
+  short_description: "先确认产品行为，再编写可实现、可验收的前端 Spec"
+  default_prompt: "使用 $write-frontend-spec 基于最新需求和当前代码先确认产品行为与边界，再编写或修改精炼、可实现、可验收的前端 Spec。"
