@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "按已确认基准审查代码改动，修复并验证 P0/P1 问题"
+  default_prompt: "使用 $code-review 按已确认的 Spec 或当前执行思路审查代码，修复并验证 P0/P1，并一次性汇总 P2/P3。"

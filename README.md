@@ -6,6 +6,7 @@
 
 | Skill | 用途 |
 | --- | --- |
+| [`code-review`](./code-review/) | 按已确认的 Spec 或执行思路审查代码，修复并验证 P0/P1，汇总 P2/P3。 |
 | [`feature-architecture-recon`](./feature-architecture-recon/) | 在设计、评审或实现前，基于代码证据梳理现有功能的入口、数据流、事实源、边界和风险。 |
 | [`review-comment-handler`](./review-comment-handler/) | 可追踪地处理批量评审意见，先分类和讨论，再统一修改并输出最终处理清单。 |
 | [`write-frontend-spec`](./write-frontend-spec/) | 将业务需求、当前代码和接口契约整理为可实现、可验收的前端功能技术 Spec。 |
