@@ -116,7 +116,18 @@ Treat component testing as an automation technique that may run on the unit-test
 
 Specify what must be controlled, not the concrete mock syntax. Mock remote responses, system time, event order, persistence callbacks, or boundary calls when needed. Do not mock the tested business logic or let a mock directly create the business result under assertion.
 
-### 6. Audit Coverage
+### 6. Add the Human Review Overview
+
+Include `## 人工评审概览` immediately after `## 状态与输入依据` in every Test Design. Derive it from the detailed scenarios; it is a business review index, not another source of rules or a substitute for the traceability matrix.
+
+- Start by explaining what the reviewer should assess: whether the expected business results are right, whether decisive conditions are missing, and whether forbidden side effects are covered. `人工评审` means reviewing the design, not assigning scenarios to `人工验证`; include both automated and manual scenarios.
+- Group short nested bullets under plain-language business questions. Choose groups for the feature, not code modules, test frameworks, or a fixed set of questions. Put each point under the question it actually answers.
+- Write each point as `condition or triggering event → observable expected result`, followed by clickable `TS-*` links to the detailed scenario headings. Cover every scenario through meaningful grouping without copying all Given/When/Then text or every data variant.
+- Preserve conditions that change the result: identify the relevant API and response field when empty values could be confused; name the event that triggers a source/state change; distinguish a stage result from the overall task result and distinguish surfaces when needed. Do not silently expand a requirement about equal outcomes into a requirement for identical implementation flows.
+- Show genuine unresolved conflicts prominently as `待确认`, with the conflicting rules and affected scenarios; do not invent a compromise or mark them accepted. When a decision is confirmed, update the overview, detailed scenarios, and traceability status together and remove obsolete conflict wording. Reference a needed Spec correction without editing the Spec unless authorized.
+- Invite feedback as `TS编号 + 哪个条件或预期不符合业务`. Keep technical setup, mock details, exhaustive data tables, and execution evidence in the detailed sections.
+
+### 7. Audit Coverage
 
 Before finalizing, verify:
 
@@ -127,7 +138,9 @@ Before finalizing, verify:
 - scenario titles, inputs, and outcomes are understandable without reading code;
 - duplicate and no-value scenarios are removed;
 - pending decisions are separated from confirmed acceptance gates;
-- every scenario has a feasible automation or manual verification method.
+- every scenario has a feasible automation or manual verification method;
+- the overview matches confirmed scenario outcomes, covers all scenario IDs through relevant groups, and links resolve after heading edits;
+- resolved decisions leave no contradictory or obsolete pending wording in the overview.
 
 ## Default Output
 
@@ -137,6 +150,7 @@ Use this outline and remove empty sections:
 # <功能名称> Test Design
 
 ## 状态与输入依据
+## 人工评审概览
 ## 测试目标 / 非目标
 ## 风险与优先级
 ## Spec - Test 追踪矩阵

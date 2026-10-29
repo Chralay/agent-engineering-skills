@@ -152,7 +152,9 @@ Confirm user behavior and product boundaries before designing state, interfaces,
 
 ### 7. Use the Default Outline
 
-Keep this order unless the feature clearly makes a section irrelevant:
+Lightweight Specs shorten the content within the existing outline; they do not replace it with a reduced structure that omits necessary design. Keep applicable sections concise. Omit a section only when it is genuinely irrelevant and briefly explain why; a simple feature or the label "lightweight" is not by itself a reason to skip necessary design.
+
+Use the following order:
 
 1. `目标 / 非目标`: Fix delivery scope and exclusions.
 2. `现状与问题`: Cite exact current files, behavior, and gaps.
@@ -205,7 +207,7 @@ Match review scope to impact:
 - Use short, direct Chinese sentences and precise technical names.
 - Name exact files, components, fields, endpoints, event types, statuses, and user messages when known.
 - Use tables for mappings, ownership, dependencies, errors, and trade-offs.
-- Use Mermaid when cross-component collaboration, several participants, multiple branches, time ordering, or state transitions are materially clearer visually.
+- Use Mermaid when a focused diagram makes the flow, important branches, state transitions, or cross-component ordering easier to understand than prose alone. Apply this equally to lightweight Specs. Prefer short text or a table when it is clearer; do not draw diagrams merely to fill a section or translate every code-level condition into nodes. Keep diagrams focused on decisions and outcomes the reader needs to review.
 - Use TypeScript, JSON, or text blocks for exact contracts; keep examples internally consistent.
 - State user-visible behavior before implementation detail.
 - Distinguish public contract fields from internal backend states.

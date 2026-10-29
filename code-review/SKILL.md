@@ -178,7 +178,17 @@ For every production-facing interface, type alias, wrapper, injection point, exp
 
 Treat a test-driven production contract that changes runtime behavior, hides a required contract, or introduces a build/type failure as P1. Treat an unnecessary but behavior-neutral production abstraction as P2, and recommend removing it rather than merely changing its syntax.
 
-Then verify that each related test:
+### Verify fixture validity before inferring a production defect
+
+- Trace successful test data back to the real creation/import entry and confirmed rules, including required fields, types, enums, ranges, units, minimum collection sizes, relationships, and version/state constraints. Passing a database INSERT or the current tests is not proof of business-valid data.
+- Distinguish valid workflow fixtures, deliberate invalid-input cases, supported historical data, and reduced algorithm vectors. Require successful create/save/import fixtures to obey their full entry contract; do not reuse a partial hash/normalization vector as a complete business object. Invalid-input cases should violate the named condition without unrelated invalid prerequisites.
+- Do not claim that normal production data contains null, omitted fields, or an alternative type solely because a hand-built fixture, nullable column, weak type, or fallback permits it. Verify an actual producer/consumer path or representative data with established provenance. A confirmed malformed-input or legacy-compatibility requirement is also a valid review basis; do not discard it merely because new-entry validation is stricter.
+- If the discrepancy comes from an invalid success fixture, treat it as a test-data defect and correct it within the authorized scope. Do not widen production types, add field adaptation/defaults, coerce missing values to zero, or request a business-rule change just to accommodate the fixture. Preserve user-confirmed compatibility decisions.
+- Re-run affected tests after correcting fixtures, retaining assertions for complete collections and relationships. Withdraw or revise findings based only on invalid fixture assumptions; distinguish a test defect from a proven production defect when assigning priority and reporting blockers.
+
+### Check test behavior and coverage
+
+Verify that each related test:
 
 - aligns its title, preconditions, call entry, and assertions with one business behavior;
 - obtains the asserted business result from real production logic rather than a mock;

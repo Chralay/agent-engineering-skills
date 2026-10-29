@@ -120,6 +120,15 @@ Related scenarios may share a file, nested `describe`, setup, and focused helper
 
 Do not collapse unrelated outcomes into one test, mock a business boundary, write the asserted result directly into component or store state, use `.skip`, or loosen assertions to match an incorrect implementation.
 
+#### Keep fixtures valid for the tested business path
+
+- Before constructing successful workflow data, trace the actual creation or import entry, its validation, and its persisted or transmitted shape. Check applicable required fields, value types, enums, ranges, units, minimum collection sizes, relationships, and version/state rules against the confirmed contract.
+- A successful fixture must satisfy those rules, not merely contain the few fields read by the tested function. A nullable database column, permissive TypeScript declaration, successful low-level INSERT, or passing test does not prove that data represents a valid business object.
+- Reuse a valid baseline for background data while keeping branch-driving values explicit. Do not use broad assertions to disguise incomplete fixtures. Document the relevant rule source next to shared fixtures or in the implementation report.
+- For invalid-input tests, start from valid data and deliberately break the condition named by the scenario; keep unrelated prerequisites valid so failure proves the intended rule. Mark historical/version-specific data explicitly and use its confirmed compatibility contract, not an invented exception.
+- Pure normalization, hashing, or other algorithm tests may use reduced inputs when their own contract permits them. Keep these vectors separate from successful create/save/import fixtures; algorithm input permissiveness does not relax business-entry requirements.
+- When a fixture exposes missing/null fields or a type mismatch, check fixture validity before blaming production. Correct invalid fixtures first; do not add defaults, nullable/optional fields, coercions, or compatibility branches solely to accept them, and do not replace missing business values with zero to make tests pass. Propose production changes only with independently verified producer/consumer or supported legacy-input evidence and the required authorization.
+
 ### 6. Handle blockers without changing the contract
 
 Default to modifying test code and the implementation report only. Stop expanding the change and record the scenario as `阻塞` when:
@@ -154,6 +163,7 @@ Finish only when:
 - Manual checks are not represented by skipped or fake automated tests.
 - Named business behavior runs through real business logic.
 - Branch-driving inputs are visible in each test.
+- Successful workflow fixtures satisfy the applicable business rules; invalid, historical, and reduced algorithm inputs are explicitly distinguished.
 - Mocks do not produce the asserted business result.
 - Target checks pass without change-related warnings or resource leaks.
 - Unrelated files remain unchanged.
