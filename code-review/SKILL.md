@@ -126,6 +126,12 @@ Prefer inlining when a single-use function only wraps an assignment, forwarding 
 
 Give one conclusion for every affected function: `保留`, `建议内联`, or `需要调整边界`, with a concrete reason. Treat readability-only over-splitting as P2. Raise it to P1 only when it causes an actual ordering, locking, transaction, cleanup, error, or state-boundary defect.
 
+### Review complex if conditions
+
+Report an `if` as P2 when understanding why the branch executes requires the reader to reconstruct distinct decisions that the expression obscures. Identify those decisions in the finding. Line count and the number of boolean operators alone do not establish a finding.
+
+Report this readability issue once by default. When the user asks for the fix, simplify the condition locally using guard clauses or a named boolean for a coherent group of comparisons. Preserve short-circuit order, side effects, and the point where the write occurs. Verify the same inputs still take or skip the branch. If the condition actually permits a stale write or another incorrect result, classify the defect by its impact.
+
 ### Keep implementation boundaries direct
 
 Check for unnecessary helpers, managers, adapters, strategies, or wrapper layers; protocol handling, API adaptation, or business rules placed at the wrong layer; duplicate sources of truth; disk state not synchronized with runtime state; and fields, promises, state, or return values with no consumer.
@@ -156,7 +162,7 @@ Do not accept the presence of a lock or a passing mocked test as proof that runt
 
 ### Protect the worktree
 
-Make only confirmed P0/P1 fixes, direct test adjustments, and explicit type-import corrections. Do not reformat, reorder, or clean unrelated files. Do not overwrite user changes or use destructive Git commands.
+Make only confirmed P0/P1 fixes, explicitly requested conditional-readability fixes, direct test adjustments, and explicit type-import corrections. Do not reformat, reorder, or clean unrelated files. Do not overwrite user changes or use destructive Git commands.
 
 ## Review Unit Tests When Relevant
 
